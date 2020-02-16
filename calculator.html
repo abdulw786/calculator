@@ -74,25 +74,24 @@
       <script type="text/javascript">
 
         $(function() {
-
-
-
             //declare variables
             var firstNumber = "";
-            var secoundNumber = "";
+            var secondNumber = "";
             var operator = "";
             var result = "";
-
             //wire up events
             //what happens when i click a number?
             // if no operato, append digit to first number display it 
             //else append digit to the second number, display it
-
             $(".number").on("click", function(){
-                console.log("BUTTON HELLO");
-                var number = $(this).val();
-                console.log(number);
-                 $("#first-number").append(number);
+                console.log($(this).val());
+                if(!operator){
+                  firstNumber += $(this).val();
+                  console.log('first number', firstNumber);
+                }else{
+                  secondNumber += $(this).val();
+                  console.log('second number', secondNumber);                  
+                }
             })
             //what happens when i click a oprator?
             //assign the value to the operator
@@ -103,27 +102,29 @@
             //if operator = times. multiply the numbers
             //if operatpr = divide, divide the number
             //if operator = exponent , raise the first number tp the power of the second 
-
             $(".operator").on("click", function(){
-                console.log('operrator Button');
+              console.log($(this).val());
+              operator = $(this).val();
                 $("#operator").append($(this).val())
-                
                 if($(this) == "minus"){
                     $("#operator").append($(this).val())
                 }
             })
             //check to make sure i result
             $(".equal").on("click", function(){
-              console.log('eqaul 2');
+              console.log($(this).val());
+              if(operator == "plus"){
+                result = parseInt(firstNumber) + parseInt(secondNumber);
+                console.log('result', result);
+              }
             })
             //what happens when i click a clear?
             $(".clear").on("click", function(){
-              console.log('clear has been click');
-              
+              $("#first-number").empty();
+              $("#operator").empty();
+              $("#second-number").empty();
+              console.log($(this).val());
             })
-
-
-
         });
 
       </script>
