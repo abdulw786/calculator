@@ -105,13 +105,22 @@
             //if operator = exponent , raise the first number tp the power of the second 
 
             $(".operator").on("click", function(){
-
+                console.log('operrator Button');
+                $("#operator").append($(this).val())
+                
                 if($(this) == "minus"){
                     $("#operator").append($(this).val())
                 }
             })
             //check to make sure i result
+            $(".equal").on("click", function(){
+              console.log('eqaul 2');
+            })
             //what happens when i click a clear?
+            $(".clear").on("click", function(){
+              console.log('clear has been click');
+              
+            })
 
 
 
