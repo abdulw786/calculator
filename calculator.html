@@ -88,9 +88,12 @@
                 if(!operator){
                   firstNumber += $(this).val();
                   console.log('first number', firstNumber);
+                  $("#first-number").append(firstNumber)
                 }else{
                   secondNumber += $(this).val();
-                  console.log('second number', secondNumber);                  
+                  console.log('second number', secondNumber);  
+                  $("#second-number").append(secondNumber)
+                
                 }
             })
             //what happens when i click a oprator?
@@ -106,9 +109,13 @@
               console.log($(this).val());
               operator = $(this).val();
                 $("#operator").append($(this).val())
-                if($(this) == "minus"){
+                if($(this) == "plus"){
                     $("#operator").append($(this).val())
-                }
+              }else if($(this) == "minus"){
+                $("#operator").append($(this).val())
+
+              }
+
             })
             //check to make sure i result
             $(".equal").on("click", function(){
@@ -116,13 +123,21 @@
               if(operator == "plus"){
                 result = parseInt(firstNumber) + parseInt(secondNumber);
                 console.log('result', result);
+                $("#result").append(result);
+              }else if (operator == "minus"){
+                result = parseInt(firstNumber) - parseInt(secondNumber);
+                $("#result").append(result);
+
               }
             })
             //what happens when i click a clear?
             $(".clear").on("click", function(){
-              $("#first-number").empty();
-              $("#operator").empty();
-              $("#second-number").empty();
+              console.log(firstNumber, secondNumber, operator, result);
+            firstNumber = "";
+            secondNumber = "";
+            operator = "";
+            result = "";
+
               console.log($(this).val());
             })
         });
