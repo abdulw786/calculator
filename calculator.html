@@ -108,35 +108,33 @@
             $(".operator").on("click", function(){
               console.log($(this).val());
               operator = $(this).val();
-                $("#operator").append($(this).val())
-                if($(this) == "plus"){
-                    $("#operator").append($(this).val())
-              }else if($(this) == "minus"){
-                $("#operator").append($(this).val())
-
-              }
-
+                $("#operator").append(operator)
             })
             //check to make sure i result
             $(".equal").on("click", function(){
               console.log($(this).val());
               if(operator == "plus"){
                 result = parseInt(firstNumber) + parseInt(secondNumber);
-                console.log('result', result);
-                $("#result").append(result);
               }else if (operator == "minus"){
-                result = parseInt(firstNumber) - parseInt(secondNumber);
-                $("#result").append(result);
+                result = firstNumber - secondNumber;
+              }else if (operator == "times"){
+                result = firstNumber * secondNumber;
+              }else if (operator == "divide"){
+                result = firstNumber /secondNumber;
 
+              }else if (operator == "power"){
+                result = Math.pow(firstNumber,secondNumber);
               }
+                $("#result").append(result);
             })
             //what happens when i click a clear?
             $(".clear").on("click", function(){
-              console.log(firstNumber, secondNumber, operator, result);
+            //   console.log(firstNumber, secondNumber, operator, result);
             firstNumber = "";
             secondNumber = "";
             operator = "";
             result = "";
+            $(".card-body h1").empty();
 
               console.log($(this).val());
             })
